@@ -21,6 +21,12 @@ This repo vendors a copy of the BIASRNet model definition
 (`biasrnet_model.py`) so it can run standalone -- see that file's
 docstring.
 
+### Architecture
+
+<div align="center">
+  <img src="img/architecture.png" width="90%"/>
+</div>
+
 ## Files
 
 - `biasrnet_model.py` -- vendored copy of the BIASRNet backbone (frozen at
@@ -44,6 +50,21 @@ python infer.py --frames-dir /path/to/real_lr_frames \
 
 `--frames-dir` should contain real, already-low-resolution consecutive
 grayscale frames.
+
+## Results
+
+<div align="center">
+  <img src="img/result_comparison.png" width="90%"/>
+</div>
+
+Diffusion refinement sharpens texture the deterministic backbone over-smooths
+(visible on the clothing/railing detail above), at a steep speed cost: with
+`t_start=200`, inference runs 201 sequential UNet forward passes per frame
+(measured ~179s/frame on an RTX 4090 -- not real-time). This stage is for
+offline/perceptual-quality use, not the live inference path; see
+[BIASRNet](https://github.com/meister1378/BiaSRNet) (4-5 FPS, multi-frame)
+or the real-time single-frame restoration project (separate repo, ~67 FPS)
+for options with an actual live-inference budget.
 
 ## Requirements
 
