@@ -62,9 +62,9 @@ Diffusion refinement sharpens texture the deterministic backbone over-smooths
 `t_start=200`, inference runs 201 sequential UNet forward passes per frame
 (measured ~179s/frame on an RTX 4090 -- not real-time). This stage is for
 offline/perceptual-quality use, not the live inference path; see
-[BIASRNet](https://github.com/meister1378/BiaSRNet) (4-5 FPS, multi-frame)
-or the real-time single-frame restoration project (separate repo, ~67 FPS)
-for options with an actual live-inference budget.
+[BIASRNet](https://github.com/meister1378/BiaSRNet) (multi-frame) or the
+real-time single-frame restoration project (separate repo) for options
+with an actual live-inference budget.
 
 ## Requirements
 
